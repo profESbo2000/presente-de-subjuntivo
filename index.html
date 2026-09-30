@@ -11,7 +11,7 @@
     <!-- Google Fonts: Inter & Outfit -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <!-- Canvas Confetti -->
-    <script ="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -188,7 +188,7 @@
                         "¡OJALÁ PARE DE LLOVER!" ☔
                     </div>
                     <p class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 max-w-md">
-                        Usamos la palabra <strong>Ojalá</strong> para expresar deseos sobre el presente o el futuro. ¡Aprende sus usos y practica con ejercicios prácticos!
+                        Usamos la palabra <strong>Ojalá</strong> para expresar deseos sobre el presente o el futuro. ¡Aprende sus usos y practica con los ejercicios interactivos!
                     </p>
                 </div>
             </div>
@@ -199,7 +199,7 @@
                 <div class="w-full bg-slate-200 dark:bg-slate-700 h-4 rounded-full overflow-hidden p-0.5 border border-slate-300 dark:border-slate-600">
                     <div id="progress-bar" class="bg-amber-500 h-full rounded-full transition-all duration-500 w-0"></div>
                 </div>
-                <div id="progress-text" class="text-xs font-bold font-outfit mt-1.5 text-slate-700 dark:text-slate-300">0 / 11 completados</div>
+                <div id="progress-text" class="text-xs font-bold font-outfit mt-1.5 text-slate-700 dark:text-slate-300">0 / 15 completados</div>
             </div>
         </div>
 
@@ -212,7 +212,7 @@
                         Regla Gramatical
                     </span>
                     <h2 class="text-2xl font-bold font-outfit text-slate-900 dark:text-white">
-                        2. OJALÁ (Expresión de Deseo)
+                        Estructura: OJALÁ + Presente de Subjuntivo
                     </h2>
                 </div>
 
@@ -230,51 +230,39 @@
                     </p>
                 </div>
 
-                <!-- Interactive Examples Cards with Speech Synth -->
+                <!-- Static Examples Cards -->
                 <h3 class="text-lg font-bold font-outfit text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-bullhorn text-amber-500"></i> Escucha ejemplos frecuentes:
+                    <i class="fa-solid fa-bookmark text-amber-500"></i> Ejemplos frecuentes:
                 </h3>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     
-                    <div onclick="speak('Ojalá haga buen tiempo')" class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-amber-400 cursor-pointer transition flex items-center justify-between group">
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between">
                         <div>
                             <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold block">Sin "que"</span>
                             <span class="text-base font-bold text-slate-800 dark:text-white">Ojalá <span class="text-amber-500">haga</span> buen tiempo.</span>
                         </div>
-                        <button class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition">
-                            <i class="fa-solid fa-volume-high text-sm"></i>
-                        </button>
                     </div>
 
-                    <div onclick="speak('Ojalá que haga buen tiempo')" class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-amber-400 cursor-pointer transition flex items-center justify-between group">
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between">
                         <div>
                             <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold block">Con "que" (Opcional)</span>
                             <span class="text-base font-bold text-slate-800 dark:text-white">Ojalá que <span class="text-amber-500">haga</span> buen tiempo.</span>
                         </div>
-                        <button class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition">
-                            <i class="fa-solid fa-volume-high text-sm"></i>
-                        </button>
                     </div>
 
-                    <div onclick="speak('Ojalá me llame esa chica')" class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-amber-400 cursor-pointer transition flex items-center justify-between group">
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between">
                         <div>
                             <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold block">Sin "que"</span>
                             <span class="text-base font-bold text-slate-800 dark:text-white">Ojalá me <span class="text-amber-500">llame</span> esa chica.</span>
                         </div>
-                        <button class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition">
-                            <i class="fa-solid fa-volume-high text-sm"></i>
-                        </button>
                     </div>
 
-                    <div onclick="speak('Ojalá que me llame esa chica')" class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-amber-400 cursor-pointer transition flex items-center justify-between group">
+                    <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between">
                         <div>
                             <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold block">Con "que" (Opcional)</span>
                             <span class="text-base font-bold text-slate-800 dark:text-white">Ojalá que me <span class="text-amber-500">llame</span> esa chica.</span>
                         </div>
-                        <button class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition">
-                            <i class="fa-solid fa-volume-high text-sm"></i>
-                        </button>
                     </div>
 
                 </div>
@@ -287,17 +275,17 @@
             </div>
         </section>
 
-        <!-- SECTION 2: SENTENCE COMPLETION EXERCISE -->
+        <!-- SECTION 2: SENTENCE COMPLETION EXERCISE (10 ITEMS) -->
         <section id="section-fill" class="space-y-8 hidden">
             
             <div class="card-custom p-6 sm:p-8">
                 <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
                     <div>
                         <span class="bg-amber-500/20 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider">
-                            Ejercicio 5
+                            Práctica Escrita
                         </span>
                         <h2 class="text-2xl font-bold font-outfit text-slate-900 dark:text-white mt-1">
-                            Completa las oraciones usando los verbos del recuadro
+                            Completa las oraciones con la forma correcta del Presente de Subjuntivo
                         </h2>
                     </div>
                     <button onclick="toggleFillHints()" class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1">
@@ -308,20 +296,24 @@
                 <!-- Word Bank Box -->
                 <div class="p-4 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl mb-8">
                     <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 text-center">
-                        Recuadro de verbos en infinitivo:
+                        Banco de verbos en infinitivo:
                     </div>
-                    <div class="flex flex-wrap justify-center gap-3">
-                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">encontrar</span>
-                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">poder</span>
-                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">aprobar</span>
-                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">mejorarse</span>
-                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">ganar</span>
-                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">ser</span>
+                    <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">aprobar</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">poder</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">ganar</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">ser</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">mejorarse</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">encontrar</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">hacer</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">venir</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">tener</span>
+                        <span class="px-2.5 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400">haber</span>
                     </div>
                 </div>
 
                 <!-- Sentence Inputs -->
-                <div class="space-y-5" id="fill-sentences-container">
+                <div class="space-y-4" id="fill-sentences-container">
                     <!-- Dynamic rendering via JS -->
                 </div>
 
@@ -355,10 +347,9 @@
                     Escucha el siguiente relato narrado en español. Presta atención a todas las oraciones con <strong>OJALÁ</strong> y responde las preguntas de comprensión al final.
                 </p>
 
-                <!-- Custom Audio Player Component -->
+                <!-- Audio Player Component -->
                 <div class="bg-slate-900 text-white p-6 rounded-2xl mb-8 border border-slate-700 shadow-xl">
-                    <!-- Elemento de audio HTML vinculado a tu archivo local ojala_audio.mp3 -->
-                    <audio id="meu-audio-ojala" src="Ojala audio.mp3" preload="auto"></audio>
+                    <audio id="meu-audio-ojala" src="ojala_audio.mp3" preload="auto"></audio>
 
                     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
                         <div class="flex items-center gap-3">
@@ -367,7 +358,7 @@
                             </div>
                             <div>
                                 <h3 class="font-outfit font-bold text-base text-white">Audio Narrado en Español</h3>
-                                <span class="text-xs text-slate-400">Archivo de audio nativo • Texto completo ~2 min</span>
+                                <span class="text-xs text-slate-400">Archivo de audio mp3 • Texto completo ~2 min</span>
                             </div>
                         </div>
 
@@ -438,14 +429,18 @@
     </footer>
 
     <script>
-        // Data Structure for Exercise 5 (Fill sentences)
+        // Data Structure for Exercise (10 Fill Sentences without verb placeholders)
         const fillSentences = [
             { id: "f1", prefix: "1. Sé que has estudiado mucho, ojalá", suffix: "el examen.", verb: "aprobar", target: "apruebes", hint: "Tú (apruebes)" },
             { id: "f2", prefix: "2. Ojalá ellos", suffix: "llegar a tiempo a la conferencia.", verb: "poder", target: "puedan", hint: "Ellos (puedan)" },
             { id: "f3", prefix: "3. Esta noche es el partido, ojalá", suffix: "mi equipo.", verb: "ganar", target: "gane", hint: "Mi equipo / Él (gane)" },
             { id: "f4", prefix: "4. Mi hermano está en el hospital, ojalá no", suffix: "nada grave.", verb: "ser", target: "sea", hint: "Ello / Él (sea)" },
             { id: "f5", prefix: "5. Me han dicho que estás resfriado, ojalá te", suffix: "pronto.", verb: "mejorarse", target: "mejores", hint: "Tú (mejores / te mejores)" },
-            { id: "f6", prefix: "6. Álex perdió su DNI ayer, ojalá que lo", suffix: "antes del viaje.", verb: "encontrar", target: "encuentre", hint: "Álex / Él (encuentre)" }
+            { id: "f6", prefix: "6. Álex perdió su DNI ayer, ojalá que lo", suffix: "antes del viaje.", verb: "encontrar", target: "encuentre", hint: "Álex / Él (encuentre)" },
+            { id: "f7", prefix: "7. Ojalá mañana", suffix: "buen tiempo para ir a la playa.", verb: "hacer", target: "haga", hint: "Él / El clima (haga)" },
+            { id: "f8", prefix: "8. Le envié una invitación a Laura, ojalá", suffix: "a la fiesta.", verb: "venir", target: "venga", hint: "Ella (venga)" },
+            { id: "f9", prefix: "9. Ojalá nosotros", suffix: "mucha suerte en la presentación.", verb: "tener", target: "tengamos", hint: "Nosotros (tengamos)" },
+            { id: "f10", prefix: "10. Mañana viajo a Madrid, ojalá no", suffix: "mucho tráfico en la autopista.", verb: "haber", target: "haya", hint: "Impersonal (haya)" }
         ];
 
         // Data Structure for Audio Listening Quiz Questions
@@ -507,21 +502,10 @@
             }
         ];
 
-        // Referencia al elemento HTML de audio para ojala_audio.mp3
+        // Audio Player Element Reference
         const audioPlayer = document.getElementById('meu-audio-ojala');
 
-        // TTS Single Sentence Function (Sintetizador para las oraciones de la teoría/ejercicios)
-        function speak(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'es-ES';
-                utterance.rate = 0.95;
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-
-        // Control de velocidad de reproducción para el archivo de audio local
+        // Playback speed controller
         function setSpeed(speed) {
             if (audioPlayer) {
                 audioPlayer.playbackRate = speed;
@@ -531,7 +515,6 @@
             document.getElementById('speed-12').className = speed === 1.2 ? "px-2 py-1 rounded font-bold bg-amber-500 text-white" : "px-2 py-1 rounded font-bold hover:bg-slate-700 text-slate-300";
         }
 
-        // Reproducir el archivo de audio local
         function playFullStory() {
             if (audioPlayer) {
                 audioPlayer.play();
@@ -545,7 +528,6 @@
             }
         }
 
-        // Pausar el archivo de audio local
         function pauseFullStory() {
             if (audioPlayer) {
                 audioPlayer.pause();
@@ -554,7 +536,6 @@
             }
         }
 
-        // Detener y reiniciar el archivo de audio local al segundo 0
         function stopFullStory() {
             if (audioPlayer) {
                 audioPlayer.pause();
@@ -611,7 +592,7 @@
 
         // Initialize Exercises HTML
         function initExerciseComponents() {
-            // Fill sentences
+            // Fill 10 sentences
             const fillContainer = document.getElementById('fill-sentences-container');
             fillContainer.innerHTML = '';
 
@@ -619,12 +600,9 @@
                 const row = document.createElement('div');
                 row.className = "p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-wrap items-center gap-2 text-sm sm:text-base font-medium";
                 row.innerHTML = `
-                    <span class="text-slate-800 dark:text-slate-200">${item.prefix}</span>
-                    <input type="text" id="${item.id}" placeholder="(${item.verb})" class="input-fill px-3 py-1.5 w-36 text-center text-sm font-bold">
+                    <span class="text-slate-800 dark:text-slate-200 font-semibold">${item.prefix}</span>
+                    <input type="text" id="${item.id}" class="input-fill px-3 py-1.5 w-36 text-center text-sm font-bold">
                     <span class="text-slate-800 dark:text-slate-200">${item.suffix}</span>
-                    <button onclick="speak('${item.prefix} ' + document.getElementById('${item.id}').value + ' ${item.suffix}')" class="ml-auto text-slate-400 hover:text-amber-500 px-2 py-1">
-                        <i class="fa-solid fa-volume-high text-xs"></i>
-                    </button>
                     <div id="${item.id}_hint" class="w-full text-xs font-semibold text-amber-600 dark:text-amber-400 mt-1 hidden">
                         Pista: Conjugación requerida -> ${item.hint}
                     </div>
@@ -636,7 +614,7 @@
             const quizContainer = document.getElementById('quiz-questions-container');
             quizContainer.innerHTML = '';
 
-            quizQuestions.forEach((q, qIndex) => {
+            quizQuestions.forEach((q) => {
                 const card = document.createElement('div');
                 card.className = "p-5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3";
                 
@@ -657,6 +635,8 @@
                 `;
                 quizContainer.appendChild(card);
             });
+
+            updateProgress();
         }
 
         // Toggle Fill Hints
@@ -680,7 +660,7 @@
                 const val = input.value.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                 const targetNorm = s.target.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-                // Handle 'te mejores' or 'mejores'
+                // Handle 'te mejores' or 'mejores' for sentence 5
                 const isValid = (val === targetNorm) || (s.id === 'f5' && (val === 'mejores' || val === 'temejores'));
 
                 if (isValid) {
@@ -758,8 +738,13 @@
             const currentTotal = fillCorrect + quizCorrect;
             const pct = Math.round((currentTotal / total) * 100);
 
-            document.getElementById('progress-bar').style.width = pct + '%';
-            document.getElementById('progress-text').innerText = `${currentTotal} / ${total} completados`;
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+
+            if (progressBar && progressText) {
+                progressBar.style.width = pct + '%';
+                progressText.innerText = `${currentTotal} / ${total} completados`;
+            }
         }
 
         function triggerConfetti() {
