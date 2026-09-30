@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OJALÁ + Presente de Subjuntivo - Gramática Española Interactiva</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            amber: '#f59e0b',
+                            amberLight: '#fef3c7',
+                            slateBg: '#0f172a',
+                            cardBg: '#1e293b',
+                            accentBlue: '#38bdf8',
+                            emerald: '#10b981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom UI Style Rules */
+        .card-custom {
+            background-color: #ffffff;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            border-radius: 1.25rem;
+            transition: all 0.25s ease;
+        }
+        .dark .card-custom {
+            background-color: #1e293b;
+            border-color: #334155;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-action {
+            border-radius: 0.85rem;
+            font-weight: 700;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+        .btn-action:active {
+            transform: translateY(0);
+        }
+
+        .input-fill {
+            border: 2px solid #cbd5e1;
+            border-radius: 0.65rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        .input-fill:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+        }
+        .dark .input-fill {
+            background-color: #0f172a;
+            border-color: #475569;
+            color: #ffffff;
+        }
+
+        .correct-fill {
+            border-color: #10b981 !important;
+            background-color: #ecfdf5 !important;
+            color: #065f46 !important;
+        }
+        .dark .correct-fill {
+            background-color: #064e3b !important;
+            color: #a7f3d0 !important;
+        }
+
+        .incorrect-fill {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+            color: #991b1b !important;
+        }
+        .dark .incorrect-fill {
+            background-color: #7f1d1d !important;
+            color: #fecaca !important;
+        }
+
+        /* Weather Cloud & Umbrella Animation */
+        @keyframes floatCloud {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-6px) translateX(4px); }
+        }
+        .animate-cloud {
+            animation: floatCloud 4s ease-in-out infinite;
+        }
+
+        @keyframes rainDrop {
+            0% { transform: translateY(-5px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(12px); opacity: 0; }
+        }
+        .rain-drop-1 { animation: rainDrop 1.2s infinite linear; }
+        .rain-drop-2 { animation: rainDrop 1.2s infinite linear 0.4s; }
+        .rain-drop-3 { animation: rainDrop 1.2s infinite linear 0.8s; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+            
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-amber-500 text-white rounded-2xl flex items-center justify-center font-outfit font-extrabold text-2xl shadow-md">
+                    ✨
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-black font-outfit text-slate-900 dark:text-white leading-none">
+                        OJALÁ + Subjuntivo
+                    </h1>
+                    <span class="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Expresar Deseos en Español</span>
+                </div>
+            </div>
+
+            <!-- Main Tabs -->
+            <div class="flex items-center gap-1.5 sm:gap-2">
+                <button id="tab-theory-btn" onclick="switchTab('theory')" class="btn-action bg-amber-500 text-white px-3 sm:px-4 py-2 text-xs sm:text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span class="hidden md:inline">1. Teoría</span>
+                </button>
+                <button id="tab-fill-btn" onclick="switchTab('fill')" class="btn-action bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 sm:px-4 py-2 text-xs sm:text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span class="hidden md:inline">2. Completar</span>
+                </button>
+                <button id="tab-audio-btn" onclick="switchTab('audio')" class="btn-action bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 sm:px-4 py-2 text-xs sm:text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-headphones"></i>
+                    <span class="hidden md:inline">3. Audio (~2 min)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 flex-grow w-full">
+
+        <!-- Top Banner & Visual Illustration -->
+        <div class="card-custom p-6 mb-8 bg-gradient-to-r from-amber-500/10 via-amber-100/30 to-sky-500/10 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 flex flex-col md:flex-row items-center justify-between gap-6 border-amber-200 dark:border-slate-700">
+            
+            <div class="flex items-center gap-5">
+                <!-- Umbrella Visual Mascot -->
+                <div class="relative w-24 h-24 bg-white dark:bg-slate-800 border-2 border-amber-300 dark:border-amber-500/30 rounded-2xl flex items-center justify-center shadow-sm shrink-0">
+                    <div class="relative flex flex-col items-center">
+                        <!-- Cloud -->
+                        <div class="animate-cloud flex items-center text-slate-400 dark:text-slate-300 text-3xl">
+                            <i class="fa-solid fa-cloud"></i>
+                        </div>
+                        <!-- Raindrops -->
+                        <div class="flex gap-2 text-sky-400 text-xs my-0.5">
+                            <span class="rain-drop-1">💧</span>
+                            <span class="rain-drop-2">💧</span>
+                            <span class="rain-drop-3">💧</span>
+                        </div>
+                        <!-- Umbrella -->
+                        <div class="text-amber-500 text-3xl">
+                            <i class="fa-solid fa-umbrella"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="inline-block bg-amber-500/20 text-amber-700 dark:text-amber-300 font-extrabold px-3 py-1 rounded-full text-xs uppercase tracking-wide mb-2">
+                        "¡OJALÁ PARE DE LLOVER!" ☔
+                    </div>
+                    <p class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 max-w-md">
+                        Usamos la palabra <strong>Ojalá</strong> para expresar deseos sobre el presente o el futuro. ¡Aprende sus usos y practica con ejercicios prácticos!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Global Score Indicator -->
+            <div class="w-full md:w-52 text-center md:text-right shrink-0">
+                <div class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Tu Progreso de Aciertos</div>
+                <div class="w-full bg-slate-200 dark:bg-slate-700 h-4 rounded-full overflow-hidden p-0.5 border border-slate-300 dark:border-slate-600">
+                    <div id="progress-bar" class="bg-amber-500 h-full rounded-full transition-all duration-500 w-0"></div>
+                </div>
+                <div id="progress-text" class="text-xs font-bold font-outfit mt-1.5 text-slate-700 dark:text-slate-300">0 / 11 completados</div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: THEORY -->
+        <section id="section-theory" class="space-y-8">
+            
+            <div class="card-custom p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-amber-500 text-white px-3 py-1 rounded-lg font-bold text-xs uppercase tracking-wider">
+                        Regla Gramatical
+                    </span>
+                    <h2 class="text-2xl font-bold font-outfit text-slate-900 dark:text-white">
+                        2. OJALÁ (Expresión de Deseo)
+                    </h2>
+                </div>
+
+                <p class="text-base font-medium text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+                    Siempre que utilicemos la palabra <strong>Ojalá</strong>, esta irá seguida del <span class="text-amber-600 dark:text-amber-400 font-bold">presente de subjuntivo</span>. Se emplea para expresar deseos (equivalente a <em>"I wish"</em> o <em>"I hope"</em> en inglés). Aunque usamos el presente del verbo, la acción se refiere tanto al <strong>presente</strong> como al <strong>futuro</strong>.
+                </p>
+
+                <!-- Grammar Note Box -->
+                <div class="bg-amber-500/10 border-l-4 border-amber-500 p-4 rounded-r-xl mb-8">
+                    <h3 class="font-bold text-amber-900 dark:text-amber-200 text-sm flex items-center gap-2 mb-1">
+                        <i class="fa-solid fa-circle-info text-amber-500"></i> ¿Se puede usar "que"?
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                        Puede escribirse <strong>“que”</strong> después de <em>ojalá</em>. Las dos versiones son totalmente correctas, aunque en el lenguaje culto y formal es más habitual omitir el "que".
+                    </p>
+                </div>
+
+                <!-- Interactive Examples Cards with Speech Synth -->
+                <h3 class="text-lg font-bold font-outfit text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-amber-500"></i> Escucha ejemplos frecuentes:
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    
+                    <div onclick="speak('Ojalá haga buen tiempo')" class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-amber-400 cursor-pointer transition flex items-center justify-between group">
+                        <div>
+                            <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold block">Sin "que"</span>
+                            <span class="text-base font-bold text-slate-800 dark:text-white">Ojalá <span class="text-amber-500">haga</span> buen tiempo.</span>
+                        </div>
+                        <button class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition">
+                            <i class="fa-solid fa-volume-high text-sm"></i>
+                        </button>
+                    </div>
+
+                    <div onclick="speak('Ojalá que haga buen tiempo')" class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-amber-400 cursor-pointer transition flex items-center justify-between group">
+                        <div>
+                            <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold block">Con "que" (Opcional)</span>
+                            <span class="text-base font-bold text-slate-800 dark:text-white">Ojalá que <span class="text-amber-500">haga</span> buen tiempo.</span>
+                        </div>
+                        <button class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition">
+                            <i class="fa-solid fa-volume-high text-sm"></i>
+                        </button>
+                    </div>
+
+                    <div onclick="speak('Ojalá me llame esa chica')" class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-amber-400 cursor-pointer transition flex items-center justify-between group">
+                        <div>
+                            <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold block">Sin "que"</span>
+                            <span class="text-base font-bold text-slate-800 dark:text-white">Ojalá me <span class="text-amber-500">llame</span> esa chica.</span>
+                        </div>
+                        <button class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition">
+                            <i class="fa-solid fa-volume-high text-sm"></i>
+                        </button>
+                    </div>
+
+                    <div onclick="speak('Ojalá que me llame esa chica')" class="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-amber-400 cursor-pointer transition flex items-center justify-between group">
+                        <div>
+                            <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold block">Con "que" (Opcional)</span>
+                            <span class="text-base font-bold text-slate-800 dark:text-white">Ojalá que me <span class="text-amber-500">llame</span> esa chica.</span>
+                        </div>
+                        <button class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition">
+                            <i class="fa-solid fa-volume-high text-sm"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="text-center pt-2">
+                <button onclick="switchTab('fill')" class="btn-action bg-amber-500 text-white px-8 py-3.5 text-base font-bold font-outfit shadow-lg shadow-amber-500/20 hover:bg-amber-600">
+                    Ir al Ejercicio de Completar <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SENTENCE COMPLETION EXERCISE -->
+        <section id="section-fill" class="space-y-8 hidden">
+            
+            <div class="card-custom p-6 sm:p-8">
+                <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
+                    <div>
+                        <span class="bg-amber-500/20 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider">
+                            Ejercicio 5
+                        </span>
+                        <h2 class="text-2xl font-bold font-outfit text-slate-900 dark:text-white mt-1">
+                            Completa las oraciones usando los verbos del recuadro
+                        </h2>
+                    </div>
+                    <button onclick="toggleFillHints()" class="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1">
+                        <i class="fa-solid fa-lightbulb"></i> <span id="hint-toggle-text">Mostrar Pistas</span>
+                    </button>
+                </div>
+
+                <!-- Word Bank Box -->
+                <div class="p-4 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl mb-8">
+                    <div class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 text-center">
+                        Recuadro de verbos en infinitivo:
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">encontrar</span>
+                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">poder</span>
+                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">aprobar</span>
+                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">mejorarse</span>
+                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">ganar</span>
+                        <span class="px-3 py-1 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-bold text-amber-600 dark:text-amber-400">ser</span>
+                    </div>
+                </div>
+
+                <!-- Sentence Inputs -->
+                <div class="space-y-5" id="fill-sentences-container">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+
+                <!-- Action Controls -->
+                <div class="flex flex-wrap items-center justify-center gap-4 mt-8 pt-4 border-t border-slate-200 dark:border-slate-800">
+                    <button onclick="checkFillAnswers()" class="btn-action bg-amber-500 text-white px-8 py-3.5 text-base font-bold font-outfit shadow-md hover:bg-amber-600">
+                        <i class="fa-solid fa-circle-check mr-2"></i> Comprobar Respuestas
+                    </button>
+                    <button onclick="resetFillAnswers()" class="btn-action bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-6 py-3.5 text-sm font-bold">
+                        <i class="fa-solid fa-rotate-right mr-2"></i> Reiniciar
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 3: LISTENING COMPREHENSION EXERCISE (~2 MIN AUDIO) -->
+        <section id="section-audio" class="space-y-8 hidden">
+            
+            <div class="card-custom p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-amber-500/20 text-amber-700 dark:text-amber-300 px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider">
+                        Comprensión Auditiva
+                    </span>
+                    <h2 class="text-2xl font-bold font-outfit text-slate-900 dark:text-white">
+                        "El día de los grandes deseos" (~2 Minutos)
+                    </h2>
+                </div>
+
+                <p class="text-sm font-medium text-slate-600 dark:text-slate-300 mb-6">
+                    Escucha el siguiente relato narrado en español. Presta atención a todas las oraciones con <strong>OJALÁ</strong> y responde las preguntas de comprensión al final.
+                </p>
+
+                <!-- Custom Audio Player Component -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl mb-8 border border-slate-700 shadow-xl">
+                    <!-- Elemento de audio HTML vinculado a tu archivo local ojala_audio.mp3 -->
+                    <audio id="meu-audio-ojala" src="ojala_audio.mp3" preload="auto"></audio>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-amber-500/20 border border-amber-500 text-amber-400 rounded-full flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-podcast"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-outfit font-bold text-base text-white">Audio Narrado en Español</h3>
+                                <span class="text-xs text-slate-400">Archivo de audio nativo • Texto completo ~2 min</span>
+                            </div>
+                        </div>
+
+                        <!-- Speed Controller -->
+                        <div class="flex items-center gap-2 bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700 text-xs">
+                            <span class="text-slate-400 font-semibold">Velocidad:</span>
+                            <button onclick="setSpeed(0.8)" id="speed-08" class="px-2 py-1 rounded font-bold hover:bg-slate-700 text-slate-300">0.8x</button>
+                            <button onclick="setSpeed(1.0)" id="speed-10" class="px-2 py-1 rounded font-bold bg-amber-500 text-white">1.0x</button>
+                            <button onclick="setSpeed(1.2)" id="speed-12" class="px-2 py-1 rounded font-bold hover:bg-slate-700 text-slate-300">1.2x</button>
+                        </div>
+                    </div>
+
+                    <!-- Audio Controls -->
+                    <div class="flex items-center justify-center gap-4 my-2">
+                        <button onclick="playFullStory()" id="audio-play-btn" class="btn-action bg-amber-500 text-slate-950 px-6 py-3 font-outfit font-extrabold text-sm flex items-center gap-2 hover:bg-amber-400">
+                            <i class="fa-solid fa-play"></i>
+                            <span>Reproducir Audio</span>
+                        </button>
+                        <button onclick="pauseFullStory()" id="audio-pause-btn" class="btn-action bg-slate-800 text-white px-5 py-3 font-outfit font-bold text-sm hidden border border-slate-700 hover:bg-slate-700">
+                            <i class="fa-solid fa-pause"></i>
+                            <span>Pausar</span>
+                        </button>
+                        <button onclick="stopFullStory()" class="btn-action bg-slate-800 text-slate-300 px-4 py-3 font-outfit font-bold text-sm border border-slate-700 hover:bg-slate-700">
+                            <i class="fa-solid fa-stop"></i>
+                        </button>
+                    </div>
+
+                    <!-- Transcription Collapsible Accordion -->
+                    <div class="mt-4 pt-4 border-t border-slate-800">
+                        <button onclick="toggleTranscript()" class="text-xs text-amber-400 font-bold hover:underline flex items-center gap-2">
+                            <i class="fa-solid fa-file-text"></i>
+                            <span id="transcript-toggle-text">Mostrar Transcripción del Texto</span>
+                        </button>
+                        <div id="transcript-box" class="hidden mt-3 p-4 bg-slate-950/70 rounded-xl text-xs sm:text-sm text-slate-300 leading-relaxed max-h-60 overflow-y-auto space-y-2 border border-slate-800">
+                            <p>¡Hola a todos! Hoy es un día muy especial para mí. Estoy organizando una excursión a la montaña con mis mejores amigos, pero el clima no parece seguro. Miro por la ventana y veo nubes oscuras. <strong>Ojalá no llueva</strong> durante el viaje y <strong>ojalá haga un día soleado</strong> para que podamos disfrutar del paisaje.</p>
+                            <p>Además, mi amigo Carlos tuvo un examen importante de la universidad esta mañana. Sé que ha estudiado durante semanas. <strong>Ojalá apruebe</strong> la materia con buena nota. Su hermana Lucía también está pasando por un momento regular porque está resfriada en casa; <strong>ojalá se mejore pronto</strong> para que pueda venir con nosotros.</p>
+                            <p>Por mi parte, mandé mi currículum a una empresa internacional la semana pasada. Esta tarde tienen que publicar la lista de seleccionados. <strong>Ojalá me llamen</strong> para la entrevista de trabajo. Sería una gran oportunidad para mi carrera.</p>
+                            <p>Y esta noche juega mi equipo favorito de fútbol la final del torneo. Nos vamos a reunir todos en casa para ver el partido en televisión. <strong>Ojalá ganemos</strong> la copa. ¡Tengo la esperanza de que sea un día inolvidable para todos!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comprehension Quiz Questions -->
+                <h3 class="text-xl font-bold font-outfit text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-question text-amber-500"></i> Preguntas de Comprensión Auditiva
+                </h3>
+
+                <div id="quiz-questions-container" class="space-y-6">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+
+                <!-- Quiz Submit Controls -->
+                <div class="flex flex-wrap items-center justify-center gap-4 mt-8 pt-4 border-t border-slate-200 dark:border-slate-800">
+                    <button onclick="checkQuizAnswers()" class="btn-action bg-amber-500 text-white px-8 py-3.5 text-base font-bold font-outfit shadow-md hover:bg-amber-600">
+                        <i class="fa-solid fa-circle-check mr-2"></i> Validar Respuestas del Quiz
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p>Aprende Gramática Española • Presente de Subjuntivo: <strong>Ojalá</strong></p>
+    </footer>
+
+    <script>
+        // Data Structure for Exercise 5 (Fill sentences)
+        const fillSentences = [
+            { id: "f1", prefix: "1. Sé que has estudiado mucho, ojalá", suffix: "el examen.", verb: "aprobar", target: "apruebes", hint: "Tú (apruebes)" },
+            { id: "f2", prefix: "2. Ojalá ellos", suffix: "llegar a tiempo a la conferencia.", verb: "poder", target: "puedan", hint: "Ellos (puedan)" },
+            { id: "f3", prefix: "3. Esta noche es el partido, ojalá", suffix: "mi equipo.", verb: "ganar", target: "gane", hint: "Mi equipo / Él (gane)" },
+            { id: "f4", prefix: "4. Mi hermano está en el hospital, ojalá no", suffix: "nada grave.", verb: "ser", target: "sea", hint: "Ello / Él (sea)" },
+            { id: "f5", prefix: "5. Me han dicho que estás resfriado, ojalá te", suffix: "pronto.", verb: "mejorarse", target: "mejores", hint: "Tú (mejores / te mejores)" },
+            { id: "f6", prefix: "6. Álex perdió su DNI ayer, ojalá que lo", suffix: "antes del viaje.", verb: "encontrar", target: "encuentre", hint: "Álex / Él (encuentre)" }
+        ];
+
+        // Data Structure for Audio Listening Quiz Questions
+        const quizQuestions = [
+            {
+                id: "q1",
+                question: "1. ¿Qué desea el narrador sobre el clima para la excursión?",
+                options: [
+                    "Que llueva para ver la lluvia en las montañas.",
+                    "Que no llueva y haga un día soleado.",
+                    "Que nieve durante toda la tarde."
+                ],
+                correct: 1,
+                explanation: "El narrador dice: 'Ojalá no llueva durante el viaje y ojalá haga un día soleado'."
+            },
+            {
+                id: "q2",
+                question: "2. ¿Qué estudió el amigo Carlos esta mañana?",
+                options: [
+                    "Un examen importante de la universidad.",
+                    "Una prueba de conducir un coche.",
+                    "Un examen de idiomas internacional."
+                ],
+                correct: 0,
+                explanation: "En el audio se menciona que Carlos tuvo un examen importante de la universidad."
+            },
+            {
+                id: "q3",
+                question: "3. ¿Por qué Lucía (la hermana de Carlos) no está del todo bien?",
+                options: [
+                    "Porque perdió su documento DNI.",
+                    "Porque tiene mucho trabajo.",
+                    "Porque está resfriada en casa."
+                ],
+                correct: 2,
+                explanation: "El texto indica que Lucía está resfriada en casa y el narrador desea que se mejore pronto."
+            },
+            {
+                id: "q4",
+                question: "4. ¿Qué espera el narrador respecto a su trabajo por la tarde?",
+                options: [
+                    "Que le paguen su salario del mes.",
+                    "Que le llamen para una entrevista de trabajo.",
+                    "Que le den unas vacaciones pagadas."
+                ],
+                correct: 1,
+                explanation: "Dice: 'Ojalá me llamen para la entrevista de trabajo'."
+            },
+            {
+                id: "q5",
+                question: "5. ¿Qué evento deportivo ocurre esta noche?",
+                options: [
+                    "El partido final de fútbol de su equipo favorito.",
+                    "Una carrera de atletismo internacional.",
+                    "Un partido de baloncesto en televisión."
+                ],
+                correct: 0,
+                explanation: "Menciona que su equipo favorito de fútbol juega la final del torneo esta noche."
+            }
+        ];
+
+        // Referencia al elemento HTML de audio para ojala_audio.mp3
+        const audioPlayer = document.getElementById('meu-audio-ojala');
+
+        // TTS Single Sentence Function (Sintetizador para las oraciones de la teoría/ejercicios)
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'es-ES';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Control de velocidad de reproducción para el archivo de audio local
+        function setSpeed(speed) {
+            if (audioPlayer) {
+                audioPlayer.playbackRate = speed;
+            }
+            document.getElementById('speed-08').className = speed === 0.8 ? "px-2 py-1 rounded font-bold bg-amber-500 text-white" : "px-2 py-1 rounded font-bold hover:bg-slate-700 text-slate-300";
+            document.getElementById('speed-10').className = speed === 1.0 ? "px-2 py-1 rounded font-bold bg-amber-500 text-white" : "px-2 py-1 rounded font-bold hover:bg-slate-700 text-slate-300";
+            document.getElementById('speed-12').className = speed === 1.2 ? "px-2 py-1 rounded font-bold bg-amber-500 text-white" : "px-2 py-1 rounded font-bold hover:bg-slate-700 text-slate-300";
+        }
+
+        // Reproducir el archivo de audio local
+        function playFullStory() {
+            if (audioPlayer) {
+                audioPlayer.play();
+                document.getElementById('audio-play-btn').classList.add('hidden');
+                document.getElementById('audio-pause-btn').classList.remove('hidden');
+
+                audioPlayer.onended = () => {
+                    document.getElementById('audio-play-btn').classList.remove('hidden');
+                    document.getElementById('audio-pause-btn').classList.add('hidden');
+                };
+            }
+        }
+
+        // Pausar el archivo de audio local
+        function pauseFullStory() {
+            if (audioPlayer) {
+                audioPlayer.pause();
+                document.getElementById('audio-play-btn').classList.remove('hidden');
+                document.getElementById('audio-pause-btn').classList.add('hidden');
+            }
+        }
+
+        // Detener y reiniciar el archivo de audio local al segundo 0
+        function stopFullStory() {
+            if (audioPlayer) {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+                document.getElementById('audio-play-btn').classList.remove('hidden');
+                document.getElementById('audio-pause-btn').classList.add('hidden');
+            }
+        }
+
+        function toggleTranscript() {
+            const box = document.getElementById('transcript-box');
+            const txt = document.getElementById('transcript-toggle-text');
+            if (box.classList.contains('hidden')) {
+                box.classList.remove('hidden');
+                txt.innerText = "Ocultar Transcripción del Texto";
+            } else {
+                box.classList.add('hidden');
+                txt.innerText = "Mostrar Transcripción del Texto";
+            }
+        }
+
+        // Tab Switcher
+        function switchTab(tab) {
+            const theorySec = document.getElementById('section-theory');
+            const fillSec = document.getElementById('section-fill');
+            const audioSec = document.getElementById('section-audio');
+
+            const theoryBtn = document.getElementById('tab-theory-btn');
+            const fillBtn = document.getElementById('tab-fill-btn');
+            const audioBtn = document.getElementById('tab-audio-btn');
+
+            const inactiveClass = "btn-action bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 sm:px-4 py-2 text-xs sm:text-sm flex items-center gap-2";
+            const activeClass = "btn-action bg-amber-500 text-white px-3 sm:px-4 py-2 text-xs sm:text-sm flex items-center gap-2";
+
+            theorySec.classList.add('hidden');
+            fillSec.classList.add('hidden');
+            audioSec.classList.add('hidden');
+
+            theoryBtn.className = inactiveClass;
+            fillBtn.className = inactiveClass;
+            audioBtn.className = inactiveClass;
+
+            if (tab === 'theory') {
+                theorySec.classList.remove('hidden');
+                theoryBtn.className = activeClass;
+            } else if (tab === 'fill') {
+                fillSec.classList.remove('hidden');
+                fillBtn.className = activeClass;
+            } else if (tab === 'audio') {
+                audioSec.classList.remove('hidden');
+                audioBtn.className = activeClass;
+            }
+        }
+
+        // Initialize Exercises HTML
+        function initExerciseComponents() {
+            // Fill sentences
+            const fillContainer = document.getElementById('fill-sentences-container');
+            fillContainer.innerHTML = '';
+
+            fillSentences.forEach((item) => {
+                const row = document.createElement('div');
+                row.className = "p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-wrap items-center gap-2 text-sm sm:text-base font-medium";
+                row.innerHTML = `
+                    <span class="text-slate-800 dark:text-slate-200">${item.prefix}</span>
+                    <input type="text" id="${item.id}" placeholder="(${item.verb})" class="input-fill px-3 py-1.5 w-36 text-center text-sm font-bold">
+                    <span class="text-slate-800 dark:text-slate-200">${item.suffix}</span>
+                    <button onclick="speak('${item.prefix} ' + document.getElementById('${item.id}').value + ' ${item.suffix}')" class="ml-auto text-slate-400 hover:text-amber-500 px-2 py-1">
+                        <i class="fa-solid fa-volume-high text-xs"></i>
+                    </button>
+                    <div id="${item.id}_hint" class="w-full text-xs font-semibold text-amber-600 dark:text-amber-400 mt-1 hidden">
+                        Pista: Conjugación requerida -> ${item.hint}
+                    </div>
+                `;
+                fillContainer.appendChild(row);
+            });
+
+            // Quiz Questions
+            const quizContainer = document.getElementById('quiz-questions-container');
+            quizContainer.innerHTML = '';
+
+            quizQuestions.forEach((q, qIndex) => {
+                const card = document.createElement('div');
+                card.className = "p-5 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3";
+                
+                let optionsHtml = '';
+                q.options.forEach((opt, oIndex) => {
+                    optionsHtml += `
+                        <label class="flex items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-amber-400 transition text-sm font-medium">
+                            <input type="radio" name="${q.id}" value="${oIndex}" class="w-4 h-4 text-amber-500 focus:ring-amber-400">
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <h4 class="font-outfit font-bold text-base text-slate-900 dark:text-white">${q.question}</h4>
+                    <div class="space-y-2">${optionsHtml}</div>
+                    <div id="${q.id}_feedback" class="text-xs p-3 rounded-lg hidden mt-2"></div>
+                `;
+                quizContainer.appendChild(card);
+            });
+        }
+
+        // Toggle Fill Hints
+        let hintsVisible = false;
+        function toggleFillHints() {
+            hintsVisible = !hintsVisible;
+            document.getElementById('hint-toggle-text').innerText = hintsVisible ? "Ocultar Pistas" : "Mostrar Pistas";
+            fillSentences.forEach(s => {
+                const el = document.getElementById(s.id + '_hint');
+                if (hintsVisible) el.classList.remove('hidden');
+                else el.classList.add('hidden');
+            });
+        }
+
+        // Check Fill Exercise Answers
+        function checkFillAnswers() {
+            let correctCount = 0;
+
+            fillSentences.forEach(s => {
+                const input = document.getElementById(s.id);
+                const val = input.value.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                const targetNorm = s.target.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+                // Handle 'te mejores' or 'mejores'
+                const isValid = (val === targetNorm) || (s.id === 'f5' && (val === 'mejores' || val === 'temejores'));
+
+                if (isValid) {
+                    input.className = "input-fill px-3 py-1.5 w-36 text-center text-sm font-bold correct-fill";
+                    correctCount++;
+                } else {
+                    input.className = "input-fill px-3 py-1.5 w-36 text-center text-sm font-bold incorrect-fill";
+                }
+            });
+
+            updateProgress();
+            
+            if (correctCount === fillSentences.length) {
+                triggerConfetti();
+            }
+        }
+
+        function resetFillAnswers() {
+            fillSentences.forEach(s => {
+                const input = document.getElementById(s.id);
+                input.value = '';
+                input.className = "input-fill px-3 py-1.5 w-36 text-center text-sm font-bold";
+            });
+            updateProgress();
+        }
+
+        // Check Quiz Answers
+        function checkQuizAnswers() {
+            let quizScore = 0;
+
+            quizQuestions.forEach(q => {
+                const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+                const feedbackEl = document.getElementById(`${q.id}_feedback`);
+
+                if (selected) {
+                    const val = parseInt(selected.value);
+                    if (val === q.correct) {
+                        quizScore++;
+                        feedbackEl.className = "text-xs p-3 rounded-lg mt-2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 font-medium";
+                        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> <strong>¡Correcto!</strong> ${q.explanation}`;
+                    } else {
+                        feedbackEl.className = "text-xs p-3 rounded-lg mt-2 bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/30 font-medium";
+                        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> <strong>Incorrecto.</strong> ${q.explanation}`;
+                    }
+                    feedbackEl.classList.remove('hidden');
+                } else {
+                    feedbackEl.className = "text-xs p-3 rounded-lg mt-2 bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 font-medium";
+                    feedbackEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> Por favor selecciona una respuesta.`;
+                    feedbackEl.classList.remove('hidden');
+                }
+            });
+
+            updateProgress();
+
+            if (quizScore === quizQuestions.length) {
+                triggerConfetti();
+            }
+        }
+
+        // Update overall score progress bar
+        function updateProgress() {
+            let fillCorrect = 0;
+            fillSentences.forEach(s => {
+                const input = document.getElementById(s.id);
+                if (input && input.classList.contains('correct-fill')) fillCorrect++;
+            });
+
+            let quizCorrect = 0;
+            quizQuestions.forEach(q => {
+                const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+                if (selected && parseInt(selected.value) === q.correct) quizCorrect++;
+            });
+
+            const total = fillSentences.length + quizQuestions.length;
+            const currentTotal = fillCorrect + quizCorrect;
+            const pct = Math.round((currentTotal / total) * 100);
+
+            document.getElementById('progress-bar').style.width = pct + '%';
+            document.getElementById('progress-text').innerText = `${currentTotal} / ${total} completados`;
+        }
+
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 120,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            initExerciseComponents();
+        };
+    </script>
+</body>
+</html>
